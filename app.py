@@ -25,7 +25,6 @@ jira_base_url = get_env_or_sidebar("JIRA_BASE_URL", "🌐 Jira Base URL")
 jira_email = get_env_or_sidebar("JIRA_EMAIL", "📧 Jira Email")
 jira_api_token = get_env_or_sidebar("JIRA_API_TOKEN", "🔑 Jira API Token", type_="password")
 
-# Set secrets in os.environ for downstream code
 if openai_api_key: os.environ["OPENAI_API_KEY"] = openai_api_key
 if github_token: os.environ["GITHUB_TOKEN"] = github_token
 if jira_base_url: os.environ["JIRA_BASE_URL"] = jira_base_url
@@ -35,20 +34,16 @@ if jira_api_token: os.environ["JIRA_API_TOKEN"] = jira_api_token
 load_dotenv()
 st.set_page_config(page_title="ScopeGenie", page_icon="🧞‍♂️", layout="wide")
 st.title("🧞 ScopeGenie – AI Test Intelligence Dashboard")
-
 jira_data = st.session_state.get("jira_data", {})
 pr_data = st.session_state.get("pr_data", {})
 test_scope = st.session_state.get("test_scope", "")
 test_plan = st.session_state.get("test_plan", "")
 test_cases = st.session_state.get("test_cases", "")
-
 with st.form("scope_form"):
     jira_id = st.text_input("🔖 Jira Ticket ID")
     pr_link = st.text_input("🔗 GitHub PR Link")
     submitted = st.form_submit_button("🧠 Analyze")
-
 missing_secrets = not all([openai_api_key, github_token, jira_base_url, jira_email, jira_api_token])
-
 if submitted:
     if missing_secrets:
         st.warning("All API keys and credentials are mandatory. Please fill in all fields in the sidebar.")
@@ -87,35 +82,30 @@ Test Types:
                 st.session_state.test_cases = test_cases
             except Exception as e:
                 st.error(f"❌ Failed to process: {e}")
-
 if jira_data:
     with st.expander("📌 Jira Story", expanded=True):
         st.markdown(f"**Title:** {jira_data['summary']}")
         st.markdown(jira_data['description'])
-
 if pr_data:
     with st.expander("🔁 GitHub PR", expanded=True):
         st.markdown(f"**Title:** {pr_data['title']}")
         st.markdown(pr_data['body'])
-        st.markdown("### 🔧 Changed Files:")
+        st.markdown("Changed Files:")
         for f in pr_data["files"]:
             st.code(f"{f['filename']} ({f['status']})")
             if f.get("patch"):
                 with st.expander(f"🔍 Diff: {f['filename']}"):
                     st.code(f["patch"], language="diff")
-
 if test_scope:
     st.markdown("---")
     st.subheader("🔬 AI-Identified Test Scope")
     st.markdown(test_scope)
     download_docx_button("⬇️ Export Test Scope (.docx)", "test_scope.docx", test_scope)
-
 if test_plan:
     st.markdown("---")
     st.subheader("📋 Test Plan")
     st.markdown(test_plan)
     download_docx_button("⬇️ Export Test Plan (.docx)", "test_plan.docx", test_plan)
-
 if test_cases:
     st.markdown("---")
     st.subheader("🧪 AI-Generated Test Cases")
