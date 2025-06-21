@@ -1,14 +1,3 @@
----
-title: ScopeGenie – AI Test Intelligence Dashboard
-emoji: "🧞‍♂️"
-colorFrom: indigo
-colorTo: blue
-sdk: streamlit
-sdk_version: "1.35.0"
-app_file: app.py
-pinned: false
----
-
 # 🧞‍♂️ ScopeGenie – AI Test Intelligence Dashboard
 
 Welcome to **ScopeGenie**! This project leverages AI to automate and enhance the process of test planning and test case generation for software projects.
