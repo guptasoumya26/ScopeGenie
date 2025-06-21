@@ -1,3 +1,14 @@
+---
+title: ScopeGenie – AI Test Intelligence Dashboard
+emoji: "🧞‍♂️"
+colorFrom: indigo
+colorTo: blue
+sdk: streamlit
+sdk_version: "1.35.0"
+app_file: app.py
+pinned: false
+---
+
 # 🧞‍♂️ ScopeGenie – AI Test Intelligence Dashboard
 
 Welcome to **ScopeGenie**! This project leverages AI to automate and enhance the process of test planning and test case generation for software projects.
@@ -52,6 +63,15 @@ prompts/              # Prompt templates for AI agents
 1. Enter a Jira Ticket ID and a GitHub PR link.
 2. Click **Analyze** to fetch data and generate test scope, plan, and cases.
 3. Review the results and export as needed.
+
+## ☁️ Deploying to Hugging Face Spaces (Manual Upload)
+
+1. Go to [Hugging Face Spaces](https://huggingface.co/spaces) and create a new Space (choose Streamlit as the SDK).
+2. After creation, open your Space and click the **Files and versions** tab.
+3. Click **Upload files** and select all your project files and folders (including `app.py`, `requirements.txt`, and all source folders).
+4. Click **Commit changes** to upload.
+5. Go to the **Settings** tab and add your secrets (API keys, tokens, etc.) under **Secrets and environment variables** (optional, since users can enter secrets in the sidebar).
+6. Your app will automatically build and deploy. If you update your code, repeat the upload process.
 
 ## 🙌 Contributing
 

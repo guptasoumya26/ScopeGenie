@@ -9,7 +9,7 @@ from agents.test_generator_agent import generate_test_cases
 from utils.exporter import download_docx_button
 
 def get_env_or_sidebar(key, label, type_="text"):
-    value = st.session_state.get(key, os.environ.get(key, ""))
+    value = st.session_state.get(key, "")
     with st.sidebar:
         if type_ == "password":
             value = st.text_input(label, type="password", key=key, value=value)
