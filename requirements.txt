@@ -1,0 +1,12 @@
+streamlit
+python-dotenv
+openai
+requests
+PyGithub
+jira
+langgraph
+tiktoken
+plotly
+networkx
+python-docx
+openpyxl
