@@ -15,7 +15,7 @@ Welcome to **ScopeGenie**! This project leverages AI to automate and enhance the
 
 - [Python](https://www.python.org/)
 - [Streamlit](https://streamlit.io/) for the web UI
-- [OpenAI API](https://openai.com/) for AI agents
+- [LLM] for AI agents
 - [Jira API](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/)
 - [GitHub API](https://docs.github.com/en/rest)
 
